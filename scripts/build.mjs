@@ -4,7 +4,6 @@ import path from 'node:path';
 
 const defaultRoot = fileURLToPath(new URL('../', import.meta.url));
 const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const escape = value => value.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 
 export async function buildLibrary(root = defaultRoot) {
   const library = JSON.parse(await readFile(path.join(root, 'content/library.json'), 'utf8'));
@@ -31,11 +30,10 @@ export async function buildLibrary(root = defaultRoot) {
   await mkdir(dist, { recursive: true });
   await cp(path.join(root, 'public'), dist, { recursive: true });
   await writeFile(path.join(dist, 'library.json'), JSON.stringify(library));
-  const shell = await readFile(path.join(root, 'public/index.html'), 'utf8');
   for (const artifact of library.artifacts) {
     const folder = path.join(dist, artifact.url.slice(1));
     await mkdir(folder, { recursive: true });
-    await writeFile(path.join(folder, 'index.html'), shell.replace('<title>Artifact Library</title>', `<title>${escape(artifact.title)} · Artifact Library</title>`));
+    await cp(path.join(root, 'public', artifact.file.slice(1)), path.join(folder, 'index.html'));
   }
   return library;
 }

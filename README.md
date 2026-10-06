@@ -1,6 +1,6 @@
 # Artifact Library
 
-A static reading library for podcast episodes, books, and other standalone HTML companions. One catalog drives the sidebar, alphabetical listings, search, and artifact pages. No framework, database, or build dependencies are required.
+A static reading library for podcast episodes, books, and other standalone HTML companions. One catalog drives the alphabetical sidebar, chronological home page (newest additions first, grouped by year with past years under Older), search, and artifact pages. No framework, database, or build dependencies are required.
 
 Empty collections stay hidden until their first artifact is added.
 
@@ -14,9 +14,9 @@ npm run build  # Refresh dist after edits; a running server serves it immediatel
 npm test       # Test the catalog and generated pages using Node's built-in runner
 ```
 
-`public/` contains the library interface and standalone artifacts. `content/library.json` is the source of truth for collections and artifact metadata. `scripts/build.mjs` validates the catalog, copies static assets, and creates a library page at each artifact's URL. `scripts/serve.mjs` is only the local development server.
+`public/` contains the library interface and standalone artifacts. `content/library.json` is the source of truth for collections and artifact metadata. `scripts/build.mjs` validates the catalog, copies static assets, and copies the full artifact to its public URL. `scripts/serve.mjs` is only the local development server.
 
-The reader displays each original HTML file in a sandboxed iframe, preserving its design and interactions. **Open full page** opens the standalone artifact. Search uses titles, descriptions, collections, tags, and optional `searchText`; it does not depend on an artifact's internal JavaScript or HTML structure.
+Artifact links open the full HTML page directly. Each artifact should include a Home link to `/` and its original source link. Keep HTML self-contained or use root-relative asset URLs so it works at both its file path and public URL. Search uses titles, descriptions, collections, tags, and optional `searchText`; it does not depend on an artifact's internal JavaScript or HTML structure.
 
 ## Add an artifact
 

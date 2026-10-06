@@ -31,7 +31,7 @@ test('builds independent podcast and book routes, preserves dates and HTML, and 
   assert.equal(saved.artifacts[0].addedOn, '2026-10-06');
   assert.equal(await readFile(path.join(root, 'dist/artifacts/example.html'), 'utf8'), '<h1>Independent HTML</h1>');
   for (const category of ['podcasts', 'books']) {
-    assert.match(await readFile(path.join(root, `dist/${category}/example/index.html`), 'utf8'), /Example &amp; companion/);
+    assert.equal(await readFile(path.join(root, `dist/${category}/example/index.html`), 'utf8'), '<h1>Independent HTML</h1>');
   }
   await writeFile(path.join(root, 'dist/stale.html'), 'stale');
   await buildLibrary(root);
