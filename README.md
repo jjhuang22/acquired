@@ -1,31 +1,44 @@
 # Artifact Library
 
-A small static library of illustrated companions to podcasts and books. Cream backgrounds, serif headings, expandable collections, alphabetical navigation, and search across titles, tags, descriptions, and chapter text. Disney is the first entry; Autobiographies is ready for future additions.
+A static reading library for podcast episodes, books, and other standalone HTML companions. One catalog drives the sidebar, alphabetical listings, search, and artifact pages. No framework, database, or build dependencies are required.
 
-## Local development
+Empty collections stay hidden until their first artifact is added.
 
-Requires Node.js 22 or newer. No runtime or build packages are needed.
+## Develop
+
+Requires Node.js 22 or newer.
 
 ```sh
-npm run dev
+npm run dev    # Build and serve on port 3000 (override with PORT)
+npm run build  # Refresh dist after edits; a running server serves it immediately
+npm test       # Test the catalog and generated pages using Node's built-in runner
 ```
 
-The server builds `dist/` and listens on port 3000 (override with `PORT`). Restart it after edits. `npm run build` produces the deployable static files. Every artifact has its own route, such as `/acquired/the-walt-disney-company/`, and a standalone HTML view. The library wraps the original companion in an isolated iframe without changing it.
+`public/` contains the library interface and standalone artifacts. `content/library.json` is the source of truth for collections and artifact metadata. `scripts/build.mjs` validates the catalog, copies static assets, and creates a library page at each artifact's URL. `scripts/serve.mjs` is only the local development server.
 
-Search lives in the sidebar; on a phone, open **Browse**. Search URLs preserve `?q=` for sharing. Search matches all query words against artifact and chapter text.
+The reader displays each original HTML file in a sandboxed iframe, preserving its design and interactions. **Open full page** opens the standalone artifact. Search uses titles, descriptions, collections, tags, and optional `searchText`; it does not depend on an artifact's internal JavaScript or HTML structure.
 
 ## Add an artifact
 
-1. Save a standalone HTML companion under `public/artifacts/<collection>/`.
-2. Add its metadata to `content/library.json`, using an existing category or adding a category there. IDs use lowercase letters, numbers, and hyphens.
-3. Run `npm run build`. If the companion contains the Disney-style `const chapters=[…];` data, its chapters are indexed automatically. Other companions remain searchable by their metadata and tags.
+1. Save its HTML under `public/artifacts/<collection>/`.
+2. Add an entry to `content/library.json`. Add a collection to `categories` if needed.
+3. Run `npm run build`.
 
-Do not add credentials or private hosting configuration. Files included here become public if you deploy a public website. See `artifacts/README.md` for the recovered Disney version's provenance and revision limitation.
+Example entry:
 
-## Vercel
+```json
+{
+  "id": "example-book",
+  "title": "Example Book",
+  "category": "autobiographies",
+  "addedOn": "2026-10-06",
+  "subtitle": "A life in ideas",
+  "description": "A short description of this companion.",
+  "tags": ["memoir", "leadership"],
+  "file": "/artifacts/autobiographies/example-book.html",
+  "source": "https://example.com/book",
+  "format": "Book companion"
+}
+```
 
-Import this GitHub repository into Vercel as a project, choose **Other** for the framework preset, and use the included `vercel.json`: build command `npm run build`, output `dist`. No API keys, database, or environment variables are needed. Deployment and domain configuration have not been performed by this change.
-
-## Validation
-
-`npm test` runs real browser checks against an already running local server using Python Playwright and Chromium. Install the test tooling separately when needed: `python -m pip install playwright` and `python -m playwright install chromium`. Tests cover sidebar collections, chapter-text search, empty results, direct routes, the original artifact's flywheel, mobile navigation, and horizontal overflow. They use the system Chromium when available. Set `LIBRARY_TEST_URL` to test another origin.
+`id`, `title`, `category`, `addedOn`, and `file` are required. Other fields are optional. Use `searchText` for additional searchable text if tags and descriptions are insufficient. Dates are calendar dates in `YYYY-MM-DD` format: record when the artifact first enters the library and preserve that date through revisions. Each entry gets `/<category>/<id>/`; IDs may repeat in different collections, but a full route must be unique.
