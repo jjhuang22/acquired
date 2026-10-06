@@ -1,0 +1,20 @@
+{
+  "title": "Artifact Library",
+  "categories": [
+    { "id": "acquired", "title": "Acquired Podcasts" },
+    { "id": "autobiographies", "title": "Autobiographies" }
+  ],
+  "artifacts": [
+    {
+      "id": "the-walt-disney-company",
+      "title": "The Walt Disney Company",
+      "category": "acquired",
+      "subtitle": "The imagination machine",
+      "description": "From a small animation studio to a world of stories, characters, and parks. An illustrated companion to Acquired, with fourteen chapters and an interactive business flywheel.",
+      "tags": ["Disney", "Walt Disney", "Roy Disney", "animation", "ownership", "Disneyland", "business strategy"],
+      "file": "/artifacts/acquired/the-walt-disney-company.html",
+      "source": "https://www.acquired.fm/episodes/the-walt-disney-company",
+      "format": "Illustrated companion"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A personal library of illustrated companions, stories, and ideas from podcasts and books.">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>Artifact Library</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="mobile-header"><a href="/">Artifact Library<span class="brand-dot">.</span></a><button id="menu-toggle" aria-expanded="false" aria-controls="sidebar">Browse <span aria-hidden="true">☰</span></button></header>
+  <aside id="sidebar" class="sidebar">
+    <a class="brand" href="/">Artifact<br>Library<span class="brand-dot">.</span></a>
+    <p class="brand-caption">A place for stories & ideas</p>
+    <form id="search-form" role="search">
+      <label for="search">Search the library</label>
+      <div class="search-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input id="search" type="search" placeholder="Find a story or idea…" autocomplete="off"></div>
+    </form>
+    <nav aria-label="Library"><a href="/" class="home-link" id="home-link"><span aria-hidden="true">⌂</span> All artifacts</a><p class="nav-label">Collections</p><div id="categories"></div></nav>
+    <p class="sidebar-note">Good stories deserve<br>a place to return to.</p>
+  </aside>
+  <main id="main" tabindex="-1"><p class="loading" role="status">Opening the library…</p></main>
+  <noscript><p class="noscript">Enable JavaScript to browse and search the library, or <a href="/artifacts/acquired/the-walt-disney-company.html">read The Walt Disney Company directly</a>.</p></noscript>
+</body>
+</html>
