@@ -34,4 +34,4 @@ Cover the full episode, including the hosts’ concluding analysis. Combine or o
 
 - Verify consequential claims. Do not invent quotes, facts, precision, or timestamps. Label approximations, conceptual diagrams, and imagined artwork; distinguish revenue, profit, box office, and cash flow.
 - Deliver full standalone HTML with **Home** linking to `/`. Link the episode attribution itself to the original source. Keep assets embedded or root-relative; avoid a library wrapper.
-- Add the catalog entry with episode title, collection, source, tags, and `addedOn`. Preserve the original addition date when revising. Check links, images, and interactions on desktop and mobile.
+- Add the catalog entry with only `id`, `title`, `category`, `addedOn`, and `file`. Keep source links and attribution in the artifact itself. Preserve the original addition date when revising. Check links, images, and interactions on desktop and mobile.

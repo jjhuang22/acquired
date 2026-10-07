@@ -15,7 +15,6 @@ export async function buildLibrary(root = defaultRoot) {
   const routes = new Set();
   for (const artifact of library.artifacts) {
     if (!categories.has(artifact.category) || !slug.test(artifact.id) || !artifact.title) throw new Error('Invalid artifact');
-    if (artifact.source && !/^https?:\/\//.test(artifact.source)) throw new Error('Invalid source URL');
     const date = new Date(`${artifact.addedOn}T00:00:00Z`);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(artifact.addedOn) || !Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== artifact.addedOn) throw new Error('Invalid addedOn date');
     artifact.url = `/${artifact.category}/${artifact.id}/`;

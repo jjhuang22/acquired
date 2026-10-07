@@ -1,7 +1,13 @@
 {
   "categories": [
-    { "id": "acquired", "title": "Acquired Podcasts" },
-    { "id": "autobiographies", "title": "Autobiographies" }
+    {
+      "id": "acquired",
+      "title": "Acquired Podcasts"
+    },
+    {
+      "id": "autobiographies",
+      "title": "Autobiographies"
+    }
   ],
   "artifacts": [
     {
@@ -9,39 +15,14 @@
       "title": "The Walt Disney Company",
       "category": "acquired",
       "addedOn": "2026-10-06",
-      "subtitle": "The imagination machine",
-      "description": "From a small animation studio to a world of stories, characters, and parks. An illustrated companion to Acquired, with fourteen chapters and an interactive business flywheel.",
-      "tags": ["Disney", "Walt Disney", "Roy Disney", "Oswald", "Mickey Mouse", "Snow White", "ABC", "EPCOT", "animation", "ownership", "Disneyland", "business strategy"],
-      "file": "/artifacts/acquired/the-walt-disney-company.html",
-      "source": "https://www.acquired.fm/episodes/the-walt-disney-company",
-      "format": "Illustrated companion"
+      "file": "/artifacts/acquired/the-walt-disney-company.html"
     },
     {
       "id": "the-home-depot",
       "title": "The Home Depot",
       "category": "acquired",
       "addedOn": "2026-10-06",
-      "subtitle": "Built to compound",
-      "description": "An illustrated companion to Acquired: seventeen timestamped chapters, founding negotiations, supplier financing and margin models, an interactive business flywheel, and the hosts’ concluding analysis.",
-      "tags": [
-        "Home Depot",
-        "Bernie Marcus",
-        "Arthur Blank",
-        "Ken Langone",
-        "Pat Farrah",
-        "Ron Brill",
-        "Frank Blake",
-        "retail",
-        "home improvement",
-        "supply chain",
-        "professional contractors",
-        "SRS",
-        "GMS",
-        "compounding"
-      ],
-      "file": "/artifacts/acquired/the-home-depot.html",
-      "source": "https://www.acquired.fm/episodes/home-depot",
-      "format": "Illustrated companion"
+      "file": "/artifacts/acquired/the-home-depot.html"
     }
   ]
 }

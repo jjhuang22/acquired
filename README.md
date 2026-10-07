@@ -18,7 +18,7 @@ npm test       # Test the catalog and generated pages using Node's built-in runn
 
 `public/` contains the library interface and standalone artifacts. `content/library.json` is the source of truth for collections and artifact metadata. `scripts/build.mjs` validates the catalog, copies static assets, and copies the full artifact to its public URL. `scripts/serve.mjs` is only the local development server.
 
-Artifact links open the full HTML page directly. Each artifact should include a Home link to `/` and its original source link. Keep HTML self-contained or use root-relative asset URLs so it works at both its file path and public URL. Search uses titles, descriptions, collections, tags, and optional `searchText`; it does not depend on an artifact's internal JavaScript or HTML structure.
+Artifact links open the full HTML page directly. Each artifact should include a Home link to `/` and its original source link. Keep HTML self-contained or use root-relative asset URLs so it works at both its file path and public URL. Search uses artifact and collection titles; it does not depend on an artifact's internal JavaScript or HTML structure.
 
 ## Add an artifact
 
@@ -36,13 +36,8 @@ Example entry:
   "title": "Example Book",
   "category": "autobiographies",
   "addedOn": "2026-10-06",
-  "subtitle": "A life in ideas",
-  "description": "A short description of this companion.",
-  "tags": ["memoir", "leadership"],
-  "file": "/artifacts/autobiographies/example-book.html",
-  "source": "https://example.com/book",
-  "format": "Book companion"
+  "file": "/artifacts/autobiographies/example-book.html"
 }
 ```
 
-`id`, `title`, `category`, `addedOn`, and `file` are required. Other fields are optional. Use `searchText` for additional searchable text if tags and descriptions are insufficient. Dates are calendar dates in `YYYY-MM-DD` format: record when the artifact first enters the library and preserve that date through revisions. Each entry gets `/<category>/<id>/`; IDs may repeat in different collections, but a full route must be unique.
+Each artifact has five fields: `id`, `title`, `category`, `addedOn`, and `file`. Dates are calendar dates in `YYYY-MM-DD` format: record when the artifact first enters the library and preserve that date through revisions. Each entry gets `/<category>/<id>/`; IDs may repeat in different collections, but a full route must be unique.

@@ -46,7 +46,7 @@ try {
   function showHome(query = '') {
     const terms = normalized(query.trim()).split(/\s+/).filter(Boolean);
     const results = artifacts.filter(a => {
-      const text = normalized([a.title, a.subtitle, a.description, categoryTitle(a.category), ...(a.tags || []), a.searchText || ''].join(' '));
+      const text = normalized([a.title, categoryTitle(a.category)].join(' '));
       return terms.every(term => text.includes(term));
     }).sort((a, b) => b.addedOn.localeCompare(a.addedOn) || a.title.localeCompare(b.title));
     main.innerHTML = `<div class="home-content"><header class="list-header">${query ? '<h1>Search results</h1>' : ''}<span id="result-count" role="status" aria-live="polite">${results.length} ${results.length === 1 ? 'artifact' : 'artifacts'}</span></header>${query ? `<p class="search-query">Results for “${escape(query)}”</p>` : ''}${results.length ? archive(results, Boolean(query)) : `<div class="empty-state"><p>${query ? 'No matching artifacts.' : 'No artifacts yet.'}</p>${query ? '<button id="clear-search">Clear search</button>' : ''}</div>`}</div>`;
