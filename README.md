@@ -1,4 +1,4 @@
-# Artifact Library
+# Library
 
 A static reading library for podcast episodes, books, and other standalone HTML companions. One catalog drives the alphabetical sidebar, chronological home page (newest additions first, grouped by year with past years under Older), search, and artifact pages. No framework, database, or build dependencies are required.
 
@@ -19,6 +19,8 @@ npm test       # Test the catalog and generated pages using Node's built-in runn
 Artifact links open the full HTML page directly. Each artifact should include a Home link to `/` and its original source link. Keep HTML self-contained or use root-relative asset URLs so it works at both its file path and public URL. Search uses titles, descriptions, collections, tags, and optional `searchText`; it does not depend on an artifact's internal JavaScript or HTML structure.
 
 ## Add an artifact
+
+For Acquired episodes, follow the [artifact writing and design guide](docs/acquired-artifacts.md).
 
 1. Save its HTML under `public/artifacts/<collection>/`.
 2. Add an entry to `content/library.json`. Add a collection to `categories` if needed.

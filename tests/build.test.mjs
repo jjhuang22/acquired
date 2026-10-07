@@ -10,7 +10,7 @@ async function fixture(t, mutate = () => {}) {
   t.after(() => rm(root, { recursive: true, force: true }));
   await mkdir(path.join(root, 'content'));
   await mkdir(path.join(root, 'public/artifacts'), { recursive: true });
-  await writeFile(path.join(root, 'public/index.html'), '<title>Artifact Library</title>');
+  await writeFile(path.join(root, 'public/index.html'), '<title>Library</title>');
   await writeFile(path.join(root, 'public/artifacts/example.html'), '<h1>Independent HTML</h1>');
   const library = {
     categories: [{ id: 'podcasts', title: 'Podcasts' }, { id: 'books', title: 'Books' }],
