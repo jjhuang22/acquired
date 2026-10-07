@@ -1,5 +1,7 @@
 # Library
 
+This repository and the reading-companion idea were inspired by [Boris Cherny’s artifact](https://claude.ai/artifact/RdE6uE7WozcP2MLfx3BDky).
+
 A static reading library for podcast episodes, books, and other standalone HTML companions. One catalog drives the alphabetical sidebar, chronological home page (newest additions first, grouped by year with past years under Older), search, and artifact pages. No framework, database, or build dependencies are required.
 
 Empty collections stay hidden until their first artifact is added.
